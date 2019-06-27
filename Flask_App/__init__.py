@@ -1,8 +1,11 @@
 # Flask_App/__init__.py
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('Flask_App.config')
-# flask_blog内にあるconfig.pyの内容をconfigとして扱う
+# Flask_App内にあるconfig.pyの内容をconfigとして扱う
 
-import Flask_App.views
+db = SQLAlchemy(app)
+
+from Flask_App.views import views, entries
